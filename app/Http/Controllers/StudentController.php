@@ -14,7 +14,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::orderBy('created_at','asc')->paginate(2);
+        $students = Student::orderBy('created_at','asc')->paginate(10);
         return view('student.index',['students'=>$students]);
     }
 
@@ -37,7 +37,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "name" => "required|string|unique:student",
+            "name" => "required|string:student",
             "age" => "required|integer",
             "gender" => "required|string",
             "birth" => "string",
@@ -87,7 +87,7 @@ class StudentController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            "name" => "string|unique:student,name,".$id,
+            "name" => "string:student,name,".$id,
             "age" => "integer",
             "gender" => "string",
             "birth" => "string",

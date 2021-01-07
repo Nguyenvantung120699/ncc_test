@@ -23,10 +23,20 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputGender">Gender</label>
-                                <select id="inputGender" name="gender" value="{{$students->gender}}" class="form-control">
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                    <option value="other">Other</option>
+                                <select id="inputGender" name="gender" class="form-control">
+                                   @if($students->gender == "male")
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                   @elseif($students->gender == "female")
+                                        <option value="female">Female</option>
+                                        <option value="male">Male</option>
+                                        <option value="other">Other</option>
+                                    @else
+                                        <option value="other">Other</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    @endif
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
